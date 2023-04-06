@@ -6,11 +6,11 @@
 <container>
 
 
+
   <body style ="align-items: center;justify-content: center;display: flex;">
-    <h2>Upload a selfie to see how you look toady!</h2>
-      {% if message %}
-          <p>{{predicted}}</p>
-      {% endif %}
+    <h1 class="text-center">Emotion Analyzer</h1>
+    <hr>
+    <h2 style="margin-top: 100px;">Upload a selfie to see how you look toady!</h2>
       <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <input type="file" name="file">
@@ -26,6 +26,19 @@
       {% if message %}
         <img  style="width: 200px; height: 150px;" src="{{ MEDIA_URL }}/{{link}}">
       {% endif %}
+
+      {% if message %}
+		<div class="row mt-4">
+			<div class="col-lg-6 mx-auto">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Result</h4>
+						<h2 class="card-text">{{predicted}}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
       
   </body>
 </container>
